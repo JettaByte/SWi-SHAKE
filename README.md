@@ -16,7 +16,7 @@ Shake는 파이썬으로 작성된, 일본 지진방재 모듈입니다.
 import shake
 
 #level을 shake의 kel 클래스의 lv 함수로 지정합니다.
-level = shake.kel.lv()
+level = await shake.kel.lv()
 
 #결과를 출력합니다.
 print(level)

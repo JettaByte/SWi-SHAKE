@@ -1,23 +1,11 @@
 ![shakelogo](https://user-images.githubusercontent.com/96969568/167048056-bb3829a4-55e3-4513-8a99-7d5143d2fbe9.png)
 
-## 한국어 가이드
+# 당분간 쓰지 마세요. 해결되면 풍드+ 디코 섭에 맨션할거에요.
 
-#### Shake가 무엇이죠?
-Shake는 파이썬으로 작성된, 일본 지진방재 모듈입니다.
-<br/>
-<br/>
-#### Shake를 어떻게 사용하죠?
-지금부터 간단한 예제를 통해 shake의 사용법을 안내해드리겠습니다.
-<br/>
-만약 지금 Shake를 통해 Level을 불러오려고 한다면 다음 코드를 사용해주십시오.
-<br/>
-```python
-#shake를 import 합니다.
-import shake
+이 라이브러리는 망했습니다!
 
-#level을 shake의 kel 클래스의 lv 함수로 지정합니다.
-level = await shake.kel.lv()
+개발자가 무지성으로 crtl + c v 시전하다 코드가 망했습니다!
 
-#결과를 출력합니다.
-print(level)
-```
+지금 쓰면 우리 모두 불편해집니다! 그냥 쓰지마세요!
+
+PR 주면 빨리 살아날수도 있고 아닐수도 있습니다.

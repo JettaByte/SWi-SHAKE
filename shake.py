@@ -2,7 +2,7 @@
 class kel:
 
     #현재 레벨 리턴
-    def lv(*arg):
+    async def lv(*arg):
         import json, requests, discord
 
         url = requests.get("https://kwatch-24h.net/EQLevel.json")
@@ -17,7 +17,7 @@ class kel:
         return lresult
 
     #현재 Green 리턴
-    def g(*arg):
+    async def g(*arg):
         import json, requests, discord
 
         url = requests.get("https://kwatch-24h.net/EQLevel.json")
@@ -32,7 +32,7 @@ class kel:
         return lresult
 
     #현재 Yellow 리턴
-    def y(*arg):
+    async def y(*arg):
         import json, requests, discord
 
         url = requests.get("https://kwatch-24h.net/EQLevel.json")
@@ -47,7 +47,7 @@ class kel:
         return lresult
 
     #현재 Red 리턴
-    def r(*arg):
+    async def r(*arg):
         import json, requests, discord
 
         url = requests.get("https://kwatch-24h.net/EQLevel.json")

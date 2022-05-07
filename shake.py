@@ -1,62 +1,77 @@
-#https://kwatch-24h.net/EQLevel.json API 클래스
-class kel:
+"""
+NIDE API CLASS
 
-    #현재 레벨 리턴
-    async def lv(*arg):
-        import json, requests, discord
+출처 : https://kwatch-24h.net/EQLevel.json
 
-        url = requests.get("https://kwatch-24h.net/EQLevel.json")
-        text = url.text
+원작자 : 뷰잉풍
 
-        data = json.loads(text)
+수정자 : KimTaeMin99
+"""
 
-        mdata = data['l']
+# 해당 모듈에 필요한 라이브러리 추가
+import requests
 
-        lresult = str(mdata)
 
-        return lresult
+class NIDE:
 
-    #현재 Green 리턴
-    async def g(*arg):
-        import json, requests, discord
+    # 초기화 함수
+    def __init__(self):
+        self.url = "https://kwatch-24h.net/EQLevel.json"
+        self.response = None
+        self.json = None
+        self.eewinfo = None
 
-        url = requests.get("https://kwatch-24h.net/EQLevel.json")
-        text = url.text
+    # 실시간 데이터를 가지고 옵니다.
+    async def __getCurrentData(self):
+        self.response = requests.get(self.url)
+        self.json = self.response.json()
+        if self.json["e"] == 1:
+            self.eewinfo = self.json["eewinfo"]
 
-        data = json.loads(text)
+    # 실시간 정보 조회
+    async def current(self, *args):
+        data = None
 
-        mdata = data['g']
+        await self.__getCurrentData()
+        if args[0] == "leval":
+            data = self.json["l"]
+        elif args[0] == "green":
+            data = self.json["g"]
+        elif args[0] == "yellow":
+            data = self.json["y"]
+        elif args[0] == "red":
+            data = self.json["r"]
+        elif args[0] == "time":
+            data = self.json["t"]
+        elif args[0] == "status":
+            data = self.json["e"]
+        elif args[0] == "eew":
+            if self.json["e"] == 1:
+                data = self.json["eewinfo"]
+        elif args[0] == "all":
+            if self.json["e"] == 1:
+                data = {
+                    "leval": self.json["l"],
+                    "green": self.json["g"],
+                    "yellow": self.json["y"],
+                    "red": self.json["r"],
+                    "time": self.json["t"],
+                    "status": self.json["e"],
+                    "eew": self.json["eewinfo"]
+                }
+            else:
+                data = {
+                    "leval": self.json["l"],
+                    "green": self.json["g"],
+                    "yellow": self.json["y"],
+                    "red": self.json["r"],
+                    "time": self.json["t"],
+                    "status": self.json["e"]
+                }
+        else:
+            data = None
 
-        lresult = str(mdata)
+        if args[1] == "Y":
+            print(data)
 
-        return lresult
-
-    #현재 Yellow 리턴
-    async def y(*arg):
-        import json, requests, discord
-
-        url = requests.get("https://kwatch-24h.net/EQLevel.json")
-        text = url.text
-
-        data = json.loads(text)
-
-        mdata = data['y']
-
-        lresult = str(mdata)
-
-        return lresult
-
-    #현재 Red 리턴
-    async def r(*arg):
-        import json, requests, discord
-
-        url = requests.get("https://kwatch-24h.net/EQLevel.json")
-        text = url.text
-
-        data = json.loads(text)
-
-        mdata = data['r']
-
-        lresult = str(mdata)
-
-        return lresult
+        return data
